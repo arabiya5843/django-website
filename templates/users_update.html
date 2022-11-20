@@ -1,0 +1,45 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}
+            {{user.name}}
+           {% endblock %}</title>
+           
+</head>
+<body>
+
+    <div id="editEmployeeModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="bg-white" action = "#" method="POST", enctype="multipart/form-data">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Employee</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+					    <div class="form-group">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a href="{% url 'users_list' %}"><input type="button" class="btn btn-default"
+                            data-dismiss="modal" value="Cancel"></a>
+                        <input type="submit" class="btn btn-info" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}
+
+
+
+
